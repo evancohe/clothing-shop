@@ -1,10 +1,12 @@
-import React from "react";
-import "./header.styles.scss";
-import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../assets/crown.svg";
-import { auth } from "../../firebase/firebase.utils";
+import React from 'react';
+import './header.styles.scss';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../assets/crown.svg';
+import { auth } from '../../firebase/firebase.utils';
 //be able to connect component with redux root reducer
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 const Header = ({ currentUser }) => (
   <div className="header">
@@ -27,7 +29,9 @@ const Header = ({ currentUser }) => (
           Sign in
         </Link>
       )}
+      <CartIcon />
     </div>
+    <CartDropdown />
   </div>
 );
 
@@ -35,4 +39,5 @@ const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
 });
 
+//connect is a high-order component which produce new component
 export default connect(mapStateToProps)(Header);
