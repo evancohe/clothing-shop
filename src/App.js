@@ -9,6 +9,7 @@ import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up-component';
 import { setCurrentUser } from './redux/user/user.actions';
+import { createStructuredSelector } from 'reselect/es';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -59,8 +60,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: setCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
